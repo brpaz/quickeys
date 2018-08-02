@@ -12,26 +12,31 @@ from shortcuts_reader import ShortcutsReader
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Wnck', '3.0')
+gi.require_version('AppIndicator3', '0.1')
 
-from gi.repository import Gtk, GLib, Gio, WebKit2, GObject, Gdk, Wnck, AppIndicator3
+from gi.repository import Gtk, GLib, Gio, Gdk, Wnck, AppIndicator3
+
 logger = logging.getLogger("main")
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 APPLICATION_NAME = "shortcuts-overlay"
-APPLICATION_ID = "net.brunopaz.shortcuts"
+APPLICATION_ID = "net.brunopaz.shortcuts-overlay"
 
 
 class Application(Gtk.Application):
-    """ Application instance """
+    """ Main Application class """
 
     def __init__(self, *args, **kwargs):
         super(Application, self).__init__(*args, application_id=APPLICATION_ID,
                                           flags=Gio.ApplicationFlags.FLAGS_NONE,
                                           **kwargs)
 
+        logger.info("Initializing")
+
         self.win = None
         self.app_dir = os.path.dirname(os.path.realpath(__file__)) + '/../'
         self.config_dir = os.path.join(
-            GLib.get_user_config_dir(), 'shortcuter/')
+            GLib.get_user_config_dir(), APPLICATION_NAME)
 
         self.shortcuts_dir = os.path.join(self.config_dir, "shortcuts")
 
@@ -46,17 +51,18 @@ class Application(Gtk.Application):
         """ Creates the indicator icon for the application """
 
         menu = Gtk.Menu()
-        open_item = Gtk.MenuItem("Open Shortcuts Folder")
+        open_configs = Gtk.MenuItem("Open Shortcuts Folder")
+        open_configs.connect("activate", self.open_shortcuts_folder)
 
-        open_wn = Gtk.MenuItem("Show shortcuts")
-        open_wn.connect("activate", self.show_shortcuts_overlay)
+        toggle_app = Gtk.MenuItem("Show shortcuts")
+        toggle_app.connect("activate", self.show_shortcuts_overlay)
 
         close_item = Gtk.MenuItem("Quit")
         close_item.connect("activate",  self.close)
 
         # Append the menu items
-        menu.append(open_wn)
-        menu.append(open_item)
+        menu.append(toggle_app)
+        menu.append(open_configs)
         menu.append(close_item)
 
         # show menu
@@ -75,21 +81,27 @@ class Application(Gtk.Application):
 
     def close(self, widget):
         """ Closes the application. This function is called when clicking Quit in system tray menu. """
-        print "close"
-        self.win.destroy()
+
+        logger.info("Closing Application")
+
+        if self.win is not None:
+            self.win.destroy()
+
         Gtk.main_quit()
 
     def show_shortcuts_overlay(self, widget):
         """ Displays the shortcuts window """
-        if self.win is None:
-            self.win = ShortcutsOverlay(self)
 
         active_application = self.get_active_application()
-        application_shortcuts = self.get_application_shortcuts(
-            active_application)
-        self.win.set_shortcuts(
-            active_application, self.get_application_shortcuts(active_application))
-        self.win.show()
+        logger.info("Active Application is " + active_application)
+
+        shortcuts = self.get_application_shortcuts(active_application)
+
+        self.win = ShortcutsOverlay(self, active_application, shortcuts)
+        self.win.show_all()
+
+    def open_shortcuts_folder(self, widget):
+        Gio.app_info_launch_default_for_uri("file://%s" % self.shortcuts_dir)
 
     def get_active_application(self):
         """ Returns the name of the active application """

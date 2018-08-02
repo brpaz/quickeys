@@ -1,8 +1,5 @@
 import os
 import yaml
-import logging
-
-logger = logging.getLogger("main")
 
 
 class ShortcutsReader:
@@ -21,10 +18,10 @@ class ShortcutsReader:
             with open(filename, 'r') as stream:
                 shortcuts = yaml.load(stream)
         except IOError as e:
-            logger.info("Cannot find shortcuts for application %s" %
-                        application)
+            print("Cannot find shortcuts for application %s" %
+                  application)
         except yaml.YAMLError as exc:
-            logger.error("Cannot parse shortcuts file %s" %
-                         filename)
+            print("Cannot parse shortcuts file %s" %
+                  filename)
         finally:
             return shortcuts

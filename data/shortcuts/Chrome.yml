@@ -1,0 +1,47 @@
+Tabs and Windows:
+  - Open a new window: <Control>N
+  - Open a new window in incognito mode: <Control><Shift>N
+  - Open a new tab: <Control>T
+  - Reopen last closed tab: <Control><Shift>T
+  - Jump to the next open tab: <Control>Tab
+  - Jump to previous open tab: <Control><Shift>Tab
+  - Jump to specific tab: <Control>1
+  - Jump to last tab: <Control>9
+  - Open your homepage in current tab: <Alt>Home
+  - Close current tab: <Control>W
+  - Close all open tabs: <Control><Shift>W
+  - Minimize the current window: <Alt><Space>N
+  - Maximize the current window: <Alt><Space>X
+  - Quit: <Control><Shift>q
+  
+Chrome features:
+  - Open the chrome menu: F10
+  - Show or hide bookmars bar: <Control><Shift>B
+  - Open bookmarks manager: <Control><Shift>o
+  - Open history: <Control>H
+  - Open downloads: <Control>j
+  - Open task manager: <Shift>Escape
+  - Open find bar in current page: <Control>F
+  - Open developer tools: F2
+  - Open the clear browser data options: <Control><Shift>Delete
+  - Open Chrome help: F1
+
+Address bar:
+  - Jump to address bar: F6
+  - Search from anywhere in the page: <Control>k
+  - Remove predictions from search bar: <Down><Shift>Delete
+  
+Webpage shortcuts:
+  - Open options to print the current page: <Control>P
+  - Open options to save the current page: <Control>S
+  - Reload page: F5
+  - Reload page ignoring cache: <Control><Shift>r
+  - Stop page loading: Escape
+  - Turn fullscreen on / off: F11
+  - Make everything on the page bigger: <Control>plus
+  - Make everything on the page smaller: <Control>minus
+  - Return everything on the page to default size: <Control>0
+  - Go to the top of the page: Home
+  - Go to the bottom of the page: End
+  
+  

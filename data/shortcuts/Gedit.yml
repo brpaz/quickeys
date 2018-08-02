@@ -1,0 +1,60 @@
+Tabs:
+  - Switch to the next tab to the left: <Control><Alt>Up
+  - Switch to the next tab to the right:  <Control><Alt>Right
+  - Close tab:  <Control>W
+  - Save All tabs: <Control><Shift>L
+  - Close All tabs: <Control><Shift>W
+  - Reopen the most recently closed tab: <Control><Shift>T
+  - Jump to nth tab: <Alt>N
+  - New Tab Group: <Contol><Alt>N
+  - Previous tab Group: <Shift><Ctrl><Alt>Up
+  - Next tab group: <Shift><Control><Alt>Down
+
+Working with files:
+  - Create a new document in a new window: <Control>N
+  - Create a new document in a new tab: <Control>T
+  - Open a document: <Control>O
+  - Open the quick open window: <Alt>O
+  - Save the current document: <Control>S
+  - Save the current document with a new filename: <Control><Shift>S
+  - Print the current document: <Control>P
+  - Print preview: <Control><Shift>P
+  - Close the current document: <Control>W
+  - Quit: <Control>Q
+
+File Editing:
+  -  Move to the beginning of the current line: Home
+  -  Move to the end of the current line: End
+  -  Move to the beginning of the document: <Control>Home
+  -  Move to the end of the document: <Control>End
+  -  Move the selected word right one word: <Alt>Right
+  -  Move the selected word left one word: <Alt>Left
+  -  Undo the last action: <Control>Z
+  -  Redo the last undone action: <Control><Shift>Z
+  -  Cut the selected text or region and place it on the clipboard: <Control>X
+  -  Copy the selected text or region onto the clipboard: <Control>C
+  -  Paste the contents of the clipboard: <Control>V
+  -  Select all text in the file: <Control>A
+  -  Delete the current line: <Control>D
+  -  Move the selected line up one line: <Alt>Up
+  -  Move the selected line down one line: <Alt>Down
+  -  Convert the selected text to upper case: <Control>U
+  -  Convert the selected text to lower case: <Control>L
+
+Panes:
+    - Show / hide the side pane: F9
+    - Show / hide the bottom pane: <Control>F9
+    - Open file menu: F10
+
+Search:
+  - Find a string: <Control>F    
+  - Find the next instance of the string: <Control>G
+  - Find the previous instance of the string: <Control><Shift>G
+  - Search and Replace: <Control>H
+  - Clear highlight: <Control><Shift>K
+  - Goto line: <Control>vertbar
+
+Tools:
+  - Check spelling: <Shift>F7
+  - Remove trailing spaces (with plugin): <Alt>F12
+  - Directory listing (with plugin): <Control><Shift>D
