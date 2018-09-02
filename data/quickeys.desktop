@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Application;Utility;
+Comment=Shows Overlay with the shortcuts of the focused Application.
+Exec=quickeys
+GenericName=Quickeys
+Icon=/usr/local/share/pixmaps/quickeys.svg
+Name=Quickeys
+StartupNotify=false
+Terminal=false
+Type=Application

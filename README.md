@@ -1,6 +1,6 @@
-# shortcutception
+# Quickeys
 
-> Linux GTK application that provides an overlay window with the list of shortcuts for the current focused application. Its a shortcut for shortcuts. Inspired by Mac OS applications [CheatSheet](https://mediaatelier.com/CheatSheet/) and [pretzel](https://github.com/amiechen/pretzel).
+> Linux application that provides an overlay window with the list of shortcuts for the current focused application. Inspired by Mac OS applications [CheatSheet](https://mediaatelier.com/CheatSheet/) and [pretzel](https://github.com/amiechen/pretzel).
 
 ![screenshot](screenshot.png)
 
@@ -8,14 +8,16 @@ This was tested on Ubuntu 18.04.
 
 ## System Requirements
 
-* Python 2.7
+* Python 3
 * GTK > 3.14
 * AppIndicator3
 
-## Build
+## Install
+
+For now the only way to install this application is installing from source. I would like to provide flatpak, snap, deb support in the future. If you know how to package Python apps in these formats, PRs are welcome ;)
 
 ```
-python main.py
+make install
 ```
 
 ## Supported Applications
@@ -25,12 +27,19 @@ Right now, this application supports displaying shortcuts for:
 * Gedit
 * Google Chrome
 * Visual Studio Code
+* JetBrains Applications
+* Firefox
+* Pinta
 
 More applications will be added later. Contributions are always welcome.
 
-## How do I add / change shortcuts?
+---
 
-Shortcuts are configured in YAML files in the data/shortcuts directory of the source code. The files in that directory are copied to ~/.config/shortcuts-overlay/shortcuts when starting the application for the first time.
+## FAQ
+
+### How do I add / change shortcuts?
+
+Shortcuts are configured in YAML files in the data/shortcuts directory of the source code. The files in that directory are copied to ~/.config/quickkeys/shortcuts when starting the application for the first time.
 
 You can add your own of modify existing ones by adding a new file to the config directory.
 
@@ -53,18 +62,6 @@ Tabs:
   - New Tab Group: <Contol><Alt>N
   - Previous tab Group: <Shift><Ctrl><Alt>Up
   - Next tab group: <Shift><Control><Alt>Down
-
-Working with files:
-  - Create a new document in a new window: <Control>N
-  - Create a new document in a new tab: <Control>T
-  - Open a document: <Control>O
-  - Open the quick open window: <Alt>O
-  - Save the current document: <Control>S
-  - Save the current document with a new filename: <Control><Shift>S
-  - Print the current document: <Control>P
-  - Print preview: <Control><Shift>P
-  - Close the current document: <Control>W
-  - Quit: <Control>Q
 ```
 
 * This format is the same from [Pretzel](https://github.com/amiechen/pretzel).
@@ -73,7 +70,8 @@ Working with files:
 ## Todo
 
 * Build a proper installer (pip, deb, flatpak).
-* Add more applications.
+* Add more applications. (Contributors welcome)
+* Is there any way in Linux to get an application registered shortcuts automatically??
 
 ## Contributing
 

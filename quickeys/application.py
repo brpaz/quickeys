@@ -1,26 +1,24 @@
-#!/usr/bin/env python
-
-import gi
 import re
 import sys
 import signal
 import shutil
 import os
 import logging
-from ui import ShortcutsOverlay
-from shortcuts_reader import ShortcutsReader
+import gi
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Wnck', '3.0')
 gi.require_version('AppIndicator3', '0.1')
 
+from quickeys.ui import ShortcutsOverlay
+from quickeys import ShortcutsReader
 from gi.repository import Gtk, GLib, Gio, Gdk, Wnck, AppIndicator3
 
 logger = logging.getLogger("main")
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
-APPLICATION_NAME = "shortcuts-overlay"
-APPLICATION_ID = "net.brunopaz.shortcuts-overlay"
+APPLICATION_NAME = "quickeys"
+APPLICATION_ID = "net.brunopaz.quickeys"
 
 
 class Application(Gtk.Application):
@@ -42,7 +40,8 @@ class Application(Gtk.Application):
 
         self.shortcuts_reader = ShortcutsReader(self.shortcuts_dir)
 
-        # copies the default shortcuts provided by the app into the "user data dir" so he can change them.
+        # copies the default shortcuts provided by the app into the "user data
+        # dir" so he can change them.
         if not os.path.exists(self.shortcuts_dir):
             shutil.copytree(os.path.join(self.app_dir, 'data',
                                          'shortcuts'), self.shortcuts_dir)
@@ -58,7 +57,7 @@ class Application(Gtk.Application):
         toggle_app.connect("activate", self.show_shortcuts_overlay)
 
         close_item = Gtk.MenuItem("Quit")
-        close_item.connect("activate",  self.close)
+        close_item.connect("activate", self.close)
 
         # Append the menu items
         menu.append(toggle_app)
@@ -84,10 +83,12 @@ class Application(Gtk.Application):
 
         logger.info("Closing Application")
 
+        Gtk.main_quit()
+
         if self.win is not None:
             self.win.destroy()
 
-        Gtk.main_quit()
+        self.quit()
 
     def show_shortcuts_overlay(self, widget):
         """ Displays the shortcuts window """
@@ -96,23 +97,36 @@ class Application(Gtk.Application):
         logger.info("Active Application is " + active_application)
 
         shortcuts = self.get_application_shortcuts(active_application)
+        system_shortcuts = self.get_system_shortcuts()
 
-        self.win = ShortcutsOverlay(self, active_application, shortcuts)
+        self.win = ShortcutsOverlay(
+            self, active_application, shortcuts, system_shortcuts)
         self.win.show_all()
 
     def open_shortcuts_folder(self, widget):
+        """ Open the folder where the shortcuts are located, using the default file manager """
         Gio.app_info_launch_default_for_uri("file://%s" % self.shortcuts_dir)
 
     def get_active_application(self):
-        """ Returns the name of the active application """
+        """ Returns the name of the active application based on the Window properties. """
         active_window_name = None
         screen = Wnck.Screen.get_default()
         screen.force_update()
 
         pid = screen.get_active_window().get_pid()
-
+        group_name = screen.get_active_window().get_class_group_name()
         with open("/proc/{pid}/comm".format(pid=pid)) as f:
             active_window_name = f.read()
+
+        # Fallback logic for Java Applications
+        if "java" in active_window_name.lower():
+
+            if "jetbrains" in group_name:
+                return 'Jetbrains'
+
+        if "main" in active_window_name.lower():
+            if "Pinta" in group_name:
+                return 'Pinta'
 
         return active_window_name.rstrip().title()
 
@@ -120,3 +134,8 @@ class Application(Gtk.Application):
         """ Returns the shortcuts for the current active application """
 
         return self.shortcuts_reader.find(application_name)
+
+    def get_system_shortcuts(self):
+        """ Returns system level shortcuts """
+
+        return self.shortcuts_reader.find("System")

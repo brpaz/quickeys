@@ -1,0 +1,15 @@
+Editing:
+  - Paste into new layer: <Shift><Control>V
+  - Paste into new image: <Control><Alt>V
+  - Select All: <Control>A
+  - Deselect All: <Control><Shift>A
+  - Invert Selection: <Control>I
+  - Fill selection: Backspace
+
+Image:
+ - Resize Image: <Control>R
+ - Crop to selection: <Shift><Control>X
+ - Resize Canvas: <Shift><Control>R
+
+Layers:
+ - Add new layer: <Shift><Control>N

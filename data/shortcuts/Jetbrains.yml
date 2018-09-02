@@ -1,14 +1,14 @@
 Editing:
-  - Basic code completion: <Control>Space
-  - Show intention actions and quick-fixes: <Alt>Enter
+  - Basic code completion: <Control>space
+  - Show intention actions and quick-fixes: <Alt>Return
   - Parameter info (within method call arguments): <Control>P
   - Quick documentation lookup: <Control>Q
   - Generate code: <Alt>Insert
   - Override methods: <Control>O
   - Implement Methods: <Control>I
   - Surround with:  <Control><Alt>T
-  - Comment/uncomment with line comment: <Control>Slash
-  - Comment/uncomment with block comment:  <Control><Shift>Slash
+  - Comment/uncomment with line comment: <Control>slash
+  - Comment/uncomment with block comment:  <Control><Shift>slash
   - Reformat code: <Control><Alt>L
   - Auto-indent line(s): <Control><Alt>I
   - Duplicate current line or selected block: <Control>D
@@ -26,7 +26,7 @@ Debugging:
   - Toggle breakpoint: <Control>F8
   - View breakpoints: <Control><Shift>F8
 
-Running: 
+Running:
   - Run: <Shift>F10
   - Debug: <Shift>F9
 

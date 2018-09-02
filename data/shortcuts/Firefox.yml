@@ -1,0 +1,57 @@
+Navigation:
+  - Back: <Alt>Left
+  - Forward: <Control>bracketleft
+  - Home: <Alt>Home
+  - Open file: <Control>O
+  - Reload: F5
+  - Reload (override cache): <Control><Shift>R
+  - Stop: Escape
+
+Current Page:
+  - Print: <Control>P
+  - Save page as: <Control>S
+  - Zoom in: <Control>plus
+  - Zoom out: <Control>minus
+  - Zoom reset: <Control>0
+
+Editing:
+  - Paste (as plain text): <Control><Shift>V
+
+Search:
+  - Find: <Control>F
+  - Find Again: F3
+  - Focus on search bar: <Control>K
+
+Windows and Tabs:
+  - Close tab: <Control>W
+  - Close window: <Control><Shift>W
+  - Quit: <Control>Q
+  - Move tab left: <Control><Shift>Prior
+  - Move tab right: <Control><Shift>Next
+  - Move tab to start: <Control>Home
+  - Move tab to end: <Control>End
+  - New tab: <Control>T
+  - New window: <Control>N
+  - New private window: <Conrol><Shift>P
+  - Undo close tab: <Control><Shift>T
+  - Undo close window: <Contol><Shift>N
+
+History:
+  - History Sidebar: <Control>H
+  - Library window: <Control><Shift>H
+  - Clear recent history: <Control><Shift>Delete
+
+Bookmarks:
+  - Bookmark page: <Control>D
+  - Bookmarks sidebar: <Control>B
+  - Library window: <Control><Shift>O
+
+Tools:
+  - Downloads: <Control><Shift>Y
+  - Add-ons: <Control><Shift>A
+  - Developer tools: F12
+  - Web console: <Control><Shift>K
+  - Page source: <Control>U
+  - Responsive design view: <Control><Shift>M
+  - Developer toolbar: <Shift>F12
+  - Inspector: <Control><Shift>c
