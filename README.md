@@ -73,6 +73,8 @@ Tabs:
 
 * Create a new startup application and use "quickeys" as command.
 
+---
+
 ## Todo
 
 * Build a proper installer (pip, deb, flatpak).
