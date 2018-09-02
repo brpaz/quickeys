@@ -41,12 +41,14 @@ More applications will be added later. Contributions are always welcome.
 
 Shortcuts are configured in YAML files in the data/shortcuts directory of the source code. The files in that directory are copied to ~/.config/quickkeys/shortcuts when starting the application for the first time.
 
-You can add your own of modify existing ones by adding a new file to the config directory.
+As a user, you can change / add shortcuts directly to the .config directory as the application reads from it at runtime.
 
-The filename should be the name of the executable of the application. You can get it from the command line like so:
+The filename should be the name of the executable of the application. In general you can get it from the command line like so:
 
 * Get the pid of your application. (Ex: ```ps ax | grep firefox```)
 * Run ```cat /proc/{pid}/comm```. The value displayed there should be the name of your shortcuts file.
+
+Some applications like Java applications doesnt work like that and returns a generic "Java" from the previous command. In that case we need to modify the source code to be able to identify the application in other away. Workarounds for Jetbrains and Pinta are already implemented. Please see the function "get_active_application" in "quickeys/application.py" for details.
 
 The yaml file should have the following structure (taken from Gedit shortcuts file):
 
@@ -67,11 +69,16 @@ Tabs:
 * This format is the same from [Pretzel](https://github.com/amiechen/pretzel).
 * The shortcut combination should follow a pattern supported by "gtk_accelerator_parse" Ex: “<Control>a” or “<Shift><Alt>F1”.
 
+### How do I start quickeys at start-up?
+
+* Create a new startup application and use "quickeys" as command.
+
 ## Todo
 
 * Build a proper installer (pip, deb, flatpak).
 * Add more applications. (Contributors welcome)
 * Is there any way in Linux to get an application registered shortcuts automatically??
+* Improve docmentation on accelerators.
 
 ## Contributing
 
